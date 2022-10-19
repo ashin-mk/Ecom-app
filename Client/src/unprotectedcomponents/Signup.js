@@ -1,27 +1,42 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import fetchData from "./urlGen"
+import "./Signup.css"
 const Signup = () => {
     const navigate=useNavigate()
     const [err,catcherr]=useState(false)
     const [inputchange,setinputChange]=useState({})
+    const [loading,setLoading]=useState(false)
     const handleInputchange=(e,id)=>{
 setinputChange({...inputchange,[id]:e.target.value})
     }
     const handleoutput=(e)=>{
+        setLoading(true)
+        console.log("oworking",e)
         e.preventDefault ()
         // console.log(inputchange)
         fetchData("POST","Signup",false,inputchange).then((r)=>{
+            catcherr(false)
+            setLoading(false)
 navigate("/login")
         }).catch((error)=>{
-            console.log(error)
-            catcherr(!err)
+            console.log("error")   
+            setLoading(false)
+            catcherr(true)
+           
         })
     }
+    
   return (
-    <div key="12">
-      <Link to={"/products"}><h1 style={{"color":"grey","textAlign":"center"}}>E-CART!</h1></Link>
-        {!err&&
+    <div id='Signup-page'>
+        {!err&& loading===false &&<>
+        <div className='Signup-Heading'>
+      <h1>E-CART!</h1>
+      <p>Already have an account?</p> 
+        <Link to="/login"><button>Login</button></Link></div>
+        
+        
+        <div id='signup-form'>
         <form action=''>
             <div>
             <label htmlFor="Username">Username </label>
@@ -39,17 +54,22 @@ navigate("/login")
                 <label htmlFor="Password">Password </label>
                 <input type="password" id="Password" name="Password" required onChange={(e)=>handleInputchange(e,"Password")}></input>
             </div>
-            <button onClick={(e)=>handleoutput(e)}>Submit</button>
-        </form>}
+            <button onClick={handleoutput}>Submit</button>
+        </form>
+        </div>
+        </>}
+        
         {err &&
-        <>
-        <p>User Exist</p>
-        <Link to={"/"}><button>Home</button></Link>
-        </>
+        <div id='error'>
+        <p>Some Error Occured !</p>
+        <button onClick={()=>catcherr(false)}>Back</button>
+        </div>
         }
-       <div style={{fontSize:"12px",marginTop:"15px",}}>
-        Already have an account?  
-        <Link to="/login"><button>Login</button></Link></div>
+        {
+            loading && <div id='loading'>
+                loading...
+                </div>
+        }
     </div>
   )
 }

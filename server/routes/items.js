@@ -9,8 +9,13 @@ router.post('/Products/add',async(req,res)=>{
     // console.log(req.body)
 })
 router.get('/Products',async(req,res)=>{
-   const useremail=jwt.verify(req.headers.authorization,process.env.SECRET_KEY)
-   const data= await item.find()
-   res.status(200).send({items:data,email:useremail})
+   try {
+      useremail=jwt.verify(req.headers.authorization,process.env.SECRET_KEY)
+      const data= await item.find()
+      res.status(200).send({items:data,email:useremail})
+   } catch (error) {
+      res.status(400).send(error)
+   }
+    
 })
 module.exports=router

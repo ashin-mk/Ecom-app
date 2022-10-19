@@ -1,0 +1,86 @@
+#login-page{
+    background-color: rgb(131, 192, 169);
+    position: absolute;
+    top:0;
+    height: 100vh;
+    width: 100%;
+}
+#login-box{
+    position: absolute;
+    right: 5vh;
+    top:22vh;
+    width:650px;
+    background-color: rgba(43, 39, 39, 0.085);
+    height: 45vh;
+    border-radius: 5px;
+}
+.login-details{
+    display: flex;
+    margin: 75px;
+}
+.login-details label{
+    position: absolute;
+    left:55px;
+    font-size: 18px;
+}
+.login-details input{
+    position: absolute;
+    left: 265px;
+    margin: 5px;
+    border-style: inherit;
+    width: 300px;
+    height: 25px;
+    border-radius: 10px;
+    background-color: azure;
+    font-size: 16.5px;
+}
+#login-box button{
+    position: absolute;
+    left: 200px;
+}
+#login-page h1{
+    position: absolute;
+    top:200px;
+    left:190px;
+    color: rgb(14, 79, 85);
+    font-size: 58px;
+    font-style: italic;
+    cursor: pointer;
+    }
+   #qs{
+    position: absolute;
+    top: 335px;
+    left:190px;
+    font-size: 18px;
+   }
+   #toSignup{
+    position: absolute;
+    left: 190px;
+    top:390px
+   }
+   #err{
+    text-align: center;
+    margin-top: 40vh;
+    }
+    #err p{
+        color: rgb(201, 0, 0);
+        font-size: 25px;
+        font-style: italic;
+    }
+    #login-details button{
+        position: absolute;
+        left: 250px;
+    }
+    #login-page button{
+        color: aliceblue;
+        background-color: rgb(10, 63, 66);
+        border-style: none;
+        padding: 10px;
+        width: 100px;
+        font-size: 21px;
+    }
+    
+    #login-page button:hover{
+        background-color:crimson;
+        scale: 1.05;
+    }

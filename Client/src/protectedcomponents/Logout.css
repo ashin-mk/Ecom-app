@@ -1,0 +1,8 @@
+#logout-N{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+background-color: aliceblue;
+    flex-direction: column;
+    align-items: center;
+}

@@ -3,12 +3,14 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import "../unprotectedcomponents/product.css";
 import fetchData from '../unprotectedcomponents/urlGen';
+import Headers from '../unprotectedcomponents/Headers';
 
 const Orders = () => {
   const navigate=useNavigate()
     const authtoken=localStorage.getItem("authorization")
     const [item,setItem]=useState([])
-    const [email,setemail]=useState()
+    const [email,setemail]=useState("")
+    const [loading,setLoading]=useState(false)
     useEffect(()=>{
       fetchData("GET","order",true).then((items)=>{setItem(items.data.arr)
 
@@ -16,17 +18,21 @@ const Orders = () => {
   },[])
   // console.log(item)
   const handleCart=(id)=>{
+    setLoading(true)
     fetchData("DELETE","order/cancel",true,{itemid:id}).then(()=>navigate("/products"))
+    .catch(()=>{setLoading(false);alert("some error occured")})
   }
     
   return (
     <div>
-       <header className='header'>
-       <Link to={"/products"}><h1 style={{"color":"grey","textAlign":"center", overflow:"hidden"}}>E-CART!</h1></Link>
-        <Link to="/Logout"><button>Logout</button></Link>
-       {authtoken.length && <p>{email}</p>}</header>
+       <Headers email={email}/>
       <h4><em>Orders</em></h4>
-     {item && 
+      
+     { loading && <div id='loading'>
+                loading...
+                </div>}
+
+     {item && loading===false &&
      item.map((item,i)=>{
       return(
         <div key={i} >
@@ -44,7 +50,7 @@ const Orders = () => {
       )
      }
      )
-     }{item.length===0 &&
+     }{!item &&
       <div>No Active orders</div>
      }
     </div>

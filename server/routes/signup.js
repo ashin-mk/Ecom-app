@@ -6,17 +6,20 @@ const salt=10
 const router=express.Router()
 
 router.post('/signup',async(req,res)=>{
-    const data= await User.find({Email:req.body.Email})
+  
+        const data= await User.find({Email:req.body.Email})
     console.log(data)
 if(data.length){
     res.status(400).send("user exist")
 }else{
     bcrypt.genSalt(salt,(salterr,saltval)=>{
-        if(!salterr){
+        if(!salterr){ 
             bcrypt.hash(req.body.Password,saltval,async(hasherr,hashval)=>{
                 if (!hasherr){
                await User.create({Username:req.body.Username,Email:req.body.Email,Number:req.body.Number,Password:hashval})
                     res.status(200).send("User created Successfully")
+                }else{
+                    res.status(400).send("err")
                 }
             })
         }

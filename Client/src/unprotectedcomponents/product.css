@@ -1,17 +1,31 @@
-#root{
-    width:370px
+#products{
+    width: 100%;
+    background-color: rgb(235, 244, 249);
+    height: fit-content;
 }
 .image{
     height: 250px;
     width: 250px;
     margin:10px;
 }
-.card{
-    height: 440px;
-    width:270px;
-    border: solid gray 1px;
-    margin:2em;
+.content{
+display: flex;   
 }
+.card{
+    display:inline-grid;
+    height: 280px;
+    width:630px;
+    border: solid gray 1px;
+    margin:4vh 0 0 80px;
+}
+.content-box{
+    margin: 15px;
+}
+.content-box ul li{
+    margin: 10px;
+    list-style:square;
+}
+
 button{
     margin: 0 0 0 5px;
     background-color: rgb(206, 200, 200);
@@ -23,10 +37,6 @@ button:hover{
 background-color: rgb(38, 40, 40);
 color:white;
 border:rgb(38, 40, 40);
-}
-.header{
-    display: block;
-text-align: end;
 }
 label,input{
     display: block;
@@ -72,3 +82,4 @@ label,input{
     margin:2px 0px;
     padding: -20px,0px;
 }
+

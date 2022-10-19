@@ -15,7 +15,10 @@ app.listen(process.env.PORT || 3001 ,(err)=>{
    if(!err){ console.log("server is running")}
    else {console.log("error running server")}
 })
-mongoose.connect("mongodb+srv://Ashindeedu:ashin123@ashinmk.rxye7.mongodb.net/ecom?retryWrites=true&w=majority",()=>{
+//
+// const db=mongodb://localhost/ecom
+const db="mongodb+srv://Ashindeedu:ashin123@ashinmk.rxye7.mongodb.net/ecomapp?retryWrites=true&w=majority"
+mongoose.connect(db,()=>{
     console.log("connected to mongodb")
 },()=>{
     console.log("error connecting in mpongo db")
@@ -23,7 +26,8 @@ mongoose.connect("mongodb+srv://Ashindeedu:ashin123@ashinmk.rxye7.mongodb.net/ec
 //body parser middlewares
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
-app.use(multer.array())
+app.use(multer.array()) //Multer is a middleware designed to handle multipart/form-data in forms. It is similar to the popular Node.js body-parser, which is built 
+//into Express middleware for form submissions. But, Multer differs in that it supports multipart data, only processing multipart/form-data forms.
 app.use(cors())
 
 // app.get("/",(req,res)=>{

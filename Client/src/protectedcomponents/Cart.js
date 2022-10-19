@@ -3,14 +3,16 @@ import "../unprotectedcomponents/product.css";
 import {useNavigate} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import fetchData from '../unprotectedcomponents/urlGen';
+import Headers from '../unprotectedcomponents/Headers';
 const Cart = () => {
   const [item,setitem]=useState([])
-  const [email,setemail]=useState([])
+  const [email,setemail]=useState("")
   const authToken=localStorage.getItem("authorization")
   const navigate=useNavigate()
   // console.log(authToken)
  useEffect(()=>{
   fetchData("GET","Cart",true).then((items)=>{setitem(items.data.data)
+    // console.log(items.data.data)
   setemail(items.data.email)}).catch((err)=>{
     console.log(err)
   })
@@ -23,22 +25,28 @@ navigate('/products')
 //  console.log(item)
   return (
     <div>
-        <header className='header'>
-        <Link to={"/products"}><h1 style={{"color":"grey","textAlign":"center"}}>E-CART!</h1></Link>
-        <Link to="/Logout"><button>Logout</button></Link>
-        {authToken.length && <p>{email}</p>}</header>
+       <Headers email={email}/>
         <h4><em>Cart</em></h4>
-      {item && 
+        {item && 
         item.map((data,i)=>{
-return(
-  <div key={i} >
-    <div className="card1">
-    <span> <img src={data.item_img} className="image1"/></span>
-    <span className='itemname'>item : {data.item_id}
+          return(
+<div className='card' key={i}>
+  <div className='content'>
+  <div className='image-box'>
+  <img className="image" src={data.item_img}/>
+  </div>
+  <div className='content-box'>
+  <ul>
+    <li>
+     Item  : {data.item_name}
+    </li>
+    <li>Stock  :{data.in_Stock}</li>
+    <li>Price  :{data.price}</li>
+  </ul>
     <button onClick={()=>handleCart(data.item_id)}>
       delete
     </button>
-    </span>
+    </div>
     </div>
   
   </div>

@@ -1,0 +1,91 @@
+#Signup-page{
+    background-color: rgb(131, 192, 169);
+    position: absolute;
+    top:0;
+    height: 100vh;
+    width: 100%;
+}
+#signup-form{
+    position: absolute;
+    right: 5vh;
+    top:10vh;
+    width:650px;
+    background-color: rgba(43, 39, 39, 0.085);
+    height: 70vh;
+    border-radius: 5px;
+}
+#signup-form div{
+display: flex;
+margin: 75px;
+
+}
+#signup-form div input{
+    position: absolute;
+    left: 285px;
+    margin: 5px;
+    border-style: inherit;
+    width: 270px;
+    height: 25px;
+    border-radius: 10px;
+    background-color: azure;
+    font-size: 18px;
+}
+#signup-form div label{
+    position: absolute;
+    left:55px;
+    font-size: 18px;
+ 
+}
+#signup-form button{
+    position: absolute;
+    left: 250px;
+}
+#Signup-page button{
+    color: aliceblue;
+    background-color: rgb(10, 63, 66);
+    border-style: none;
+    padding: 10px;
+    width: 100px;
+    font-size: 21px;
+}
+
+#Signup-page button:hover{
+    background-color:crimson;
+    scale: 1.05;
+}
+.Signup-Heading h1{
+position: absolute;
+top:200px;
+left:190px;
+color: rgb(14, 79, 85);
+font-size: 58px;
+font-style: italic;
+cursor: pointer;
+}
+.Signup-Heading p{
+    position: absolute;
+    top: 335px;
+    left:190px
+}
+.Signup-Heading button{
+position: absolute;
+left: 190px;
+top:390px
+}
+#error{
+text-align: center;
+align-items: center;
+margin-top: 40vh;
+}
+#error p{
+    color: red;
+    font-size: 25px;
+    font-style: italic;
+}
+#loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90.5vh;
+  width:100%
+}
