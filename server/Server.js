@@ -16,7 +16,7 @@ app.listen(process.env.PORT || 3001 ,(err)=>{
    else {console.log("error running server")}
 })
 //
-const db=mongodb://localhost/ecom
+const db="mongodb://localhost/ecom"
 
 mongoose.connect(db,()=>{
     console.log("connected to mongodb")
